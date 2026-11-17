@@ -1,0 +1,8 @@
+baseURL = "https://example.github.io/portfolio/" # Placeholder: GitHub Actions overrides this at build time.
+languageCode = "en-au"
+title = "My Portfolio"
+disableKinds = ["taxonomy", "term", "RSS"]
+[params]
+  description = "Selected design work and case studies"
+[markup.goldmark.renderer]
+  unsafe = false

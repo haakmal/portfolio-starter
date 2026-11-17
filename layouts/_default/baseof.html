@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="{{ site.Language.Lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ if not .IsHome }}{{ .Title }} · {{ end }}{{ site.Data.profile.name }}</title>
+<meta name="description" content="{{ .Description | default site.Params.description }}">
+{{ with resources.Get "css/main.css" }}{{ $css := . | minify | fingerprint }}<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">{{ end }}
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header container"><a class="identity" href="{{ site.Home.RelPermalink }}">{{ site.Data.profile.name }}</a><nav aria-label="Primary navigation"><a href="{{ "work/" | relURL }}"{{ if eq .Section "work" }} aria-current="page"{{ end }}>Work</a><a href="{{ "about/" | relURL }}"{{ if eq .RelPermalink ("about/" | relURL) }} aria-current="page"{{ end }}>About</a></nav></header>
+{{ block "main" . }}{{ end }}
+<footer class="site-footer container"><span>© {{ now.Year }} {{ site.Data.profile.name }}</span><span>Built with Hugo · Published with GitHub Pages</span><a href="#top">Back to top ↑</a></footer>
+</body>
+</html>

@@ -1,0 +1,4 @@
+{{ define "main" }}
+<main id="main" class="container"><section class="intro"><p class="eyebrow">Portfolio / Selected work</p><h1>{{ site.Data.profile.role }}</h1><p class="lead">{{ site.Data.profile.intro }}</p></section>
+<section class="work-section" aria-labelledby="work-heading"><div class="section-heading"><h2 id="work-heading">Selected work</h2><a href="{{ "work/" | relURL }}">View all work ↗</a></div><div class="project-grid">{{ $projects := where site.RegularPages "Section" "work" }}{{ range first 6 ((where $projects "Params.featured" true).ByWeight) }}{{ partial "project-card.html" . }}{{ end }}</div></section>
+</main>{{ end }}

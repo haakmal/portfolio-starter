@@ -1,0 +1,11 @@
+# SAFE TO EDIT: Your name, introduction and links.
+name: "Your Name"
+role: "Designer and creative practitioner"
+intro: "I explore ideas through research, making and design."
+email: "hello@example.com" # Replace before publishing, or leave empty to hide.
+location: "Sydney, Australia"
+links:
+  - label: "LinkedIn"
+    url: "" # Leave blank to hide.
+  - label: "GitHub"
+    url: ""
