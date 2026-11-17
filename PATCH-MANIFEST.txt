@@ -1,11 +1,10 @@
-Stage 03 documentation-only overlay. Extract at the root of your Stage 02 portfolio repository.
+Stage 04 — Arrow typography consistency
 
-REPLACE README.md
-ADD docs/SAFE_EDITING.md
-ADD docs/CASE_STUDY_TEMPLATE.md
-ADD docs/PUBLISHING_CHECKLIST.md
-ADD docs/TROUBLESHOOTING.md
-ADD docs/STAGE-03-CHANGELOG.md
-ADD PATCH-MANIFEST.txt
-
-No files are removed. Commit on a branch after review. Existing project content, CSS, Hugo templates and workflow remain unchanged.
+assets/css/main.css
+layouts/index.html
+layouts/_default/baseof.html
+layouts/_default/single.html
+layouts/work/single.html
+layouts/partials/project-card.html
+docs/STAGE-04-CHANGELOG.md
+PATCH-MANIFEST.txt

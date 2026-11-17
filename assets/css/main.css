@@ -196,6 +196,18 @@ a:focus-visible, button:focus-visible {
 .button-link:hover { background: var(--ink); color: #fff; }
 .button-link span { font-size: 1.25rem; line-height: 1; }
 
+/* INTERFACE ARROWS — independent of data/design.yaml font_pair.
+ * Apply .ui-arrow to decorative arrow glyphs in Hugo templates.
+ * Students may change font_pair without altering the arrows.
+ * No layout/display properties here: buttons and project cards retain their design. */
+.ui-arrow {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: normal;
+  line-height: 1;
+}
+
 /* WORK INDEX AND PROJECT CARDS */
 .work-section { padding-bottom: clamp(80px, 9vw, 125px); }
 .section-heading {

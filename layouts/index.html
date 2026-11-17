@@ -5,7 +5,7 @@
       <p class="eyebrow">Portfolio / Selected work</p>
       <h1 id="intro-title">{{ site.Data.profile.role }}</h1>
       <p class="lead">{{ site.Data.profile.intro }}</p>
-      <a class="button-link" href="{{ "work/" | relURL }}">Explore my work <span aria-hidden="true">↗</span></a>
+      <a class="button-link" href="{{ "work/" | relURL }}">Explore my work <span class="ui-arrow" aria-hidden="true">↗</span></a>
     </div>
     <div class="intro-art">{{ partial "hero-mark.html" . }}</div>
   </section>
@@ -15,7 +15,7 @@
     {{ if eq (len $featured) 0 }}{{ $featured = first 6 $projects.ByWeight }}{{ end }}
     <div class="section-heading">
       <h2 id="work-heading">Selected work</h2>
-      <div class="section-actions"><span class="index-count">INDEX / {{ printf "%02d" (len $featured) }}</span><a class="text-link" href="{{ "work/" | relURL }}">View all work ↗</a></div>
+      <div class="section-actions"><span class="index-count">INDEX / {{ printf "%02d" (len $featured) }}</span><a class="text-link" href="{{ "work/" | relURL }}">View all work <span class="ui-arrow" aria-hidden="true">↗</span></a></div>
     </div>
     <div class="project-grid">
       {{ range $featured }}{{ partial "project-card.html" . }}{{ end }}

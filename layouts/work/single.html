@@ -1,6 +1,6 @@
 {{ define "main" }}
 <main id="main" class="container case-study">
-  <a class="back-link" href="{{ "work/" | relURL }}">← All work</a>
+  <a class="back-link" href="{{ "work/" | relURL }}"><span class="ui-arrow" aria-hidden="true">←</span> All work</a>
   <header class="case-header">
     <p class="eyebrow">Case study{{ with .Params.year }} / {{ . }}{{ end }}</p>
     <h1>{{ .Title }}</h1>
@@ -19,6 +19,6 @@
     </aside>
     <article class="prose">{{ .Content }}</article>
   </div>
-  <a class="back-link end-link" href="{{ "work/" | relURL }}">← All work</a>
+  <a class="back-link end-link" href="{{ "work/" | relURL }}"><span class="ui-arrow" aria-hidden="true">←</span> All work</a>
 </main>
 {{ end }}

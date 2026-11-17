@@ -3,10 +3,10 @@
   <p class="eyebrow">Portfolio / About</p>
   <h1>{{ .Title }}</h1>
   <article class="prose">{{ .Content }}</article>
-  {{ with site.Data.profile.email }}<p class="contact"><a class="button-link" href="mailto:{{ . }}">Email me <span aria-hidden="true">↗</span></a></p>{{ end }}
+  {{ with site.Data.profile.email }}<p class="contact"><a class="button-link" href="mailto:{{ . }}">Email me <span class="ui-arrow" aria-hidden="true">↗</span></a></p>{{ end }}
   {{ with site.Data.profile.links }}
     <div class="profile-links">
-      {{ range . }}{{ if .url }}<a href="{{ .url | safeURL }}" rel="noopener noreferrer">{{ .label }} ↗</a>{{ end }}{{ end }}
+      {{ range . }}{{ if .url }}<a href="{{ .url | safeURL }}" rel="noopener noreferrer">{{ .label }} <span class="ui-arrow" aria-hidden="true">↗</span></a>{{ end }}{{ end }}
     </div>
   {{ end }}
 </main>

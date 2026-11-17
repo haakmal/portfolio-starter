@@ -57,14 +57,14 @@
     <nav class="site-nav" aria-label="Primary navigation">
       <a href="{{ "work/" | relURL }}"{{ if eq .Section "work" }} aria-current="page"{{ end }}>Work</a>
       <a href="{{ "about/" | relURL }}"{{ if eq .RelPermalink ("about/" | relURL) }} aria-current="page"{{ end }}>About</a>
-      {{ with site.Data.profile.email }}<a class="nav-contact" href="mailto:{{ . }}">Contact <span aria-hidden="true">↗</span></a>{{ end }}
+      {{ with site.Data.profile.email }}<a class="nav-contact" href="mailto:{{ . }}">Contact <span class="ui-arrow" aria-hidden="true">↗</span></a>{{ end }}
     </nav>
   </header>
   {{ block "main" . }}{{ end }}
   <footer class="site-footer container">
     <span>© {{ now.Year }} {{ site.Data.profile.name }}</span>
     <span>Built with Hugo · Published with GitHub Pages</span>
-    <a href="#top">Back to top ↑</a>
+    <a href="#top">Back to top <span class="ui-arrow" aria-hidden="true">↑</span></a>
   </footer>
 </body>
 </html>
