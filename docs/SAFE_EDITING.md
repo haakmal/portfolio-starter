@@ -7,9 +7,10 @@ The repository is a folder of source files that Hugo turns into a website. **Git
 | Location | What it changes | Common mistake |
 | --- | --- | --- |
 | `data/profile.yaml` | Name, role, introduction, email and links | Deleting quotation marks or breaking indentation |
-| `data/design.yaml` | Accent, text contrast, fonts and Work layout | Invalid HEX colour or unknown font option |
+| `data/design.yaml` | Accent, text contrast, fonts, Work layout and optional homepage artwork | Invalid HEX colour or unknown font option |
 | `content/about.md` | Your About page | Accidentally removing the opening/closing `---` |
 | `content/work/` | Project case studies | Creating `my-project.md` instead of `my-project/index.md` |
+| `static/images/` | Optional homepage artwork; reference it in `design.yaml` without the `static/` prefix | Uploading into the wrong folder or using a mismatched filename |
 | Project image files | Covers and documentation | Filename doesn't match `cover:` or image link |
 | `assets/css/custom.css` | Optional CSS experiments | An override that hides text or reduces contrast |
 

@@ -20,7 +20,7 @@ If the site does not appear, follow [Publishing and troubleshooting](docs/TROUBL
 | Task | File or folder |
 | --- | --- |
 | Your name, introduction, email and links | [`data/profile.yaml`](data/profile.yaml) |
-| Accent colour, font pairing, grid or list layout | [`data/design.yaml`](data/design.yaml) |
+| Accent colour, fonts, work layout, optional homepage graphic | [`data/design.yaml`](data/design.yaml) |
 | Your About page | [`content/about.md`](content/about.md) |
 | Project titles, descriptions and case studies | `content/work/PROJECT-NAME/index.md` |
 | Project covers and process images | The same project folder as its `index.md` |
@@ -47,9 +47,13 @@ accent: "#465FE8"
 accent_text: "#FFFFFF"
 font_pair: grotesk
 work_layout: grid
+hero_graphic:
+  enabled: true
+  image: ""
+  alt: ""
 ```
 
-Choose `grotesk`, `studio`, `humanist`, `contrast` or `system` for typography. Use `grid` or `list` for the Work page. Keep the accent and accent text colours readable together. See [Customisation](docs/CUSTOMISATION.md) for all choices and optional CSS overrides.
+Choose `grotesk`, `studio`, `humanist`, `contrast` or `system` for typography. Use `grid` or `list` for the Work page. The homepage graphic is optional: set `hero_graphic.enabled: false` to remove it, or upload your own image to `static/images/` and set `hero_graphic.image: "images/your-artwork.jpg"`. Keep the accent and accent text colours readable together. See [Customisation](docs/CUSTOMISATION.md) for all choices and optional CSS overrides.
 
 ## What not to edit yet
 

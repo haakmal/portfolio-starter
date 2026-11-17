@@ -1,10 +1,11 @@
-Stage 04 — Arrow typography consistency
+Stage 05 — Optional homepage hero graphic
 
+README.md
 assets/css/main.css
+data/design.yaml
+docs/CUSTOMISATION.md
+docs/SAFE_EDITING.md
+docs/STAGE-05-CHANGELOG.md
+docs/TROUBLESHOOTING.md
 layouts/index.html
-layouts/_default/baseof.html
-layouts/_default/single.html
-layouts/work/single.html
-layouts/partials/project-card.html
-docs/STAGE-04-CHANGELOG.md
-PATCH-MANIFEST.txt
+static/images/.gitkeep

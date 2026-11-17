@@ -6,6 +6,6 @@ email: "hello@example.com" # Replace before publishing, or leave empty to hide.
 location: "Sydney, Australia"
 links:
   - label: "LinkedIn"
-    url: "" # Leave blank to hide.
+    url: "https://www.linkedin.com/in/yourname" # Leave blank to hide.
   - label: "GitHub"
-    url: ""
+    url: "https://github.com/yourname"

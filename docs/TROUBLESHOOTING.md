@@ -47,3 +47,9 @@ If you work locally, `git status`, `git log --oneline -5` and `git diff` can hel
 ## What to include when asking for help
 
 Share the page URL (if public), the **first meaningful error** from the Actions build log, the affected file path, and what you changed. **Never share passwords, access tokens or private research data.**
+
+## Homepage hero graphic is missing or unwanted
+
+In `data/design.yaml`, check the `hero_graphic` block. To remove the graphic, set `enabled: false` (not `"false"`). The introduction should expand without leaving an empty frame.
+
+To replace the graphic, upload the image to `static/images/` and use a path such as `image: "images/your-artwork.jpg"`. Do not include `static/` or a leading slash, and match the filename's capitalisation. If the image is missing, Hugo falls back to the original graphic and logs a warning in GitHub Actions. Add a short `alt` description for meaningful artwork.

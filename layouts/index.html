@@ -1,13 +1,42 @@
 {{ define "main" }}
+{{/* The hero is optional. Its image can be changed through data/design.yaml. */}}
+{{ $showHero := true }}
+{{ $heroImage := "" }}
+{{ $heroAlt := "" }}
+{{ with site.Data.design.hero_graphic }}
+  {{/* Test whether enabled is present: default(true) would override false. */}}
+  {{ if isset . "enabled" }}{{ $showHero = .enabled }}{{ end }}
+  {{ with .image }}{{ $heroImage = . }}{{ end }}
+  {{ with .alt }}{{ $heroAlt = . }}{{ end }}
+{{ end }}
+{{/* File paths are relative to static/, e.g. images/my-artwork.jpg. */}}
+{{ if and $showHero $heroImage }}
+  {{ if or (hasPrefix $heroImage "/") (in $heroImage "..") (in $heroImage "://") (hasPrefix $heroImage "static/") }}
+    {{ warnf "Invalid hero_graphic.image %q in data/design.yaml; use a path relative to static/" $heroImage }}
+    {{ $heroImage = "" }}
+  {{ else if not (fileExists (printf "static/%s" $heroImage)) }}
+    {{ warnf "Hero image static/%s not found; using the original graphic" $heroImage }}
+    {{ $heroImage = "" }}
+  {{ end }}
+{{ end }}
 <main id="main" class="container">
-  <section class="intro" aria-labelledby="intro-title">
+  <section class="intro{{ if not $showHero }} intro--text-only{{ end }}" aria-labelledby="intro-title">
     <div class="intro-copy">
       <p class="eyebrow">Portfolio / Selected work</p>
       <h1 id="intro-title">{{ site.Data.profile.role }}</h1>
       <p class="lead">{{ site.Data.profile.intro }}</p>
       <a class="button-link" href="{{ "work/" | relURL }}">Explore my work <span class="ui-arrow" aria-hidden="true">↗</span></a>
     </div>
-    <div class="intro-art">{{ partial "hero-mark.html" . }}</div>
+    {{ if $showHero }}
+    <div class="intro-art">
+      {{ if $heroImage }}
+        <img class="hero-mark" src="{{ $heroImage | relURL }}" alt="{{ $heroAlt }}" decoding="async">
+      {{ else }}
+        {{/* Built-in motif follows the student's selected accent colour. */}}
+        {{ partial "hero-mark.html" . }}
+      {{ end }}
+    </div>
+    {{ end }}
   </section>
   <section class="work-section" aria-labelledby="work-heading">
     {{ $projects := where site.RegularPages "Section" "work" }}

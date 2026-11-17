@@ -15,10 +15,21 @@ accent_text: "#FFFFFF"
 # humanist: Manrope + Source Sans 3
 # contrast: Fraunces + DM Sans (expressive serif headings)
 # system:  device fonts, without external font requests
-font_pair: humanist
+font_pair: grotesk
 
 # Project index: grid | list
 work_layout: grid
 
 # Want more control? Edit assets/css/custom.css. It loads after the starter styles.
 # You can also edit assets/css/main.css and layouts/ directly if you want.
+
+# OPTIONAL HOMEPAGE GRAPHIC
+# Set enabled: false to hide the artwork and its frame completely.
+# Leave image: "" to retain the original geometric motif (it follows accent).
+# For your own image, upload it into static/images/ through GitHub, then use
+# the relative path, e.g. image: "images/my-artwork.jpg" (no "static/" prefix).
+# Use alt to describe meaningful artwork; leave it empty for decoration.
+hero_graphic:
+  enabled: false
+  image: ""
+  alt: ""
