@@ -1,1 +1,14 @@
-{{ define "main" }}<main id="main" class="container page"><p class="eyebrow">Portfolio / Index</p><h1>{{ .Title }}</h1>{{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}<div class="project-grid">{{ range .RegularPages.ByWeight }}{{ partial "project-card.html" . }}{{ end }}</div></main>{{ end }}
+{{ define "main" }}
+<main id="main" class="container page work-index">
+  <p class="eyebrow">Portfolio / Index</p>
+  <h1>{{ .Title }}</h1>
+  {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+  <div class="section-heading">
+    <h2>Projects</h2>
+    <span class="index-count">INDEX / {{ printf "%02d" (len .RegularPages) }}</span>
+  </div>
+  <div class="project-grid">
+    {{ range .RegularPages.ByWeight }}{{ partial "project-card.html" . }}{{ end }}
+  </div>
+</main>
+{{ end }}

@@ -1,0 +1,29 @@
+Portfolio Starter — Stage 02 incremental overlay
+Apply to the root of the Stage 01 Hugo starter. No deletions.
+
+MODIFIED:
+  README.md
+  assets/css/main.css
+  layouts/_default/baseof.html
+  layouts/_default/single.html
+  layouts/index.html
+  layouts/partials/project-card.html
+  layouts/work/list.html
+  layouts/work/single.html
+
+NEW:
+  assets/css/custom.css
+  data/design.yaml
+  layouts/partials/hero-mark.html
+  docs/CUSTOMISATION.md
+  docs/typeface-preview.html
+  docs/STAGE-02-CHANGELOG.md
+  PATCH-MANIFEST.txt
+
+UNTOUCHED:
+  content/
+  data/profile.yaml
+  hugo.toml
+  .github/workflows/deploy.yml
+  .gitignore
+  LICENSE

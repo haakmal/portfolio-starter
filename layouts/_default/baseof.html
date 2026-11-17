@@ -1,16 +1,70 @@
 <!doctype html>
 <html lang="{{ site.Language.Lang }}">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{ if not .IsHome }}{{ .Title }} · {{ end }}{{ site.Data.profile.name }}</title>
-<meta name="description" content="{{ .Description | default site.Params.description }}">
-{{ with resources.Get "css/main.css" }}{{ $css := . | minify | fingerprint }}<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">{{ end }}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ if not .IsHome }}{{ .Title }} · {{ end }}{{ site.Data.profile.name }}</title>
+  <meta name="description" content="{{ .Description | default site.Params.description }}">
+
+  {{/* Design options are deliberately limited to known classes; CSS remains fully editable. */}}
+  {{- $font := site.Data.design.font_pair | default "grotesk" -}}
+  {{- if not (in (slice "grotesk" "studio" "humanist" "contrast" "system") $font) -}}
+    {{- $font = "grotesk" -}}
+  {{- end -}}
+  {{- $layout := site.Data.design.work_layout | default "grid" -}}
+  {{- if not (in (slice "grid" "list") $layout) -}}
+    {{- $layout = "grid" -}}
+  {{- end -}}
+  {{- $accent := site.Data.design.accent | default "#465FE8" -}}
+  {{- if not (findRE `^#[0-9A-Fa-f]{6}$` $accent) -}}
+    {{- $accent = "#465FE8" -}}
+  {{- end -}}
+  {{- $accentText := site.Data.design.accent_text | default "#FFFFFF" -}}
+  {{- if not (findRE `^#[0-9A-Fa-f]{6}$` $accentText) -}}
+    {{- $accentText = "#FFFFFF" -}}
+  {{- end -}}
+
+  {{/* Only load the chosen font pairing. All choices have local fallbacks. */}}
+  {{- if ne $font "system" -}}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  {{- if eq $font "grotesk" -}}
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+  {{- else if eq $font "studio" -}}
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+  {{- else if eq $font "humanist" -}}
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+  {{- else if eq $font "contrast" -}}
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+  {{- end -}}
+  {{- end -}}
+
+  {{ with resources.Get "css/main.css" }}
+    {{- $css := . | minify | fingerprint -}}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+  {{ end }}
+  {{/* Safe beginner colours; the custom stylesheet below can override them. */}}
+  <style>:root { --accent: {{ $accent | safeCSS }}; --accent-ink: {{ $accentText | safeCSS }}; }</style>
+  {{ with resources.Get "css/custom.css" }}
+    {{- $custom := . | minify | fingerprint -}}
+    <link rel="stylesheet" href="{{ $custom.RelPermalink }}" integrity="{{ $custom.Data.Integrity }}">
+  {{ end }}
 </head>
-<body>
-<a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header container"><a class="identity" href="{{ site.Home.RelPermalink }}">{{ site.Data.profile.name }}</a><nav aria-label="Primary navigation"><a href="{{ "work/" | relURL }}"{{ if eq .Section "work" }} aria-current="page"{{ end }}>Work</a><a href="{{ "about/" | relURL }}"{{ if eq .RelPermalink ("about/" | relURL) }} aria-current="page"{{ end }}>About</a></nav></header>
-{{ block "main" . }}{{ end }}
-<footer class="site-footer container"><span>© {{ now.Year }} {{ site.Data.profile.name }}</span><span>Built with Hugo · Published with GitHub Pages</span><a href="#top">Back to top ↑</a></footer>
+<body id="top" class="font-{{ $font }} work-{{ $layout }}">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header container">
+    <a class="identity" href="{{ site.Home.RelPermalink }}">{{ site.Data.profile.name }}</a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="{{ "work/" | relURL }}"{{ if eq .Section "work" }} aria-current="page"{{ end }}>Work</a>
+      <a href="{{ "about/" | relURL }}"{{ if eq .RelPermalink ("about/" | relURL) }} aria-current="page"{{ end }}>About</a>
+      {{ with site.Data.profile.email }}<a class="nav-contact" href="mailto:{{ . }}">Contact <span aria-hidden="true">↗</span></a>{{ end }}
+    </nav>
+  </header>
+  {{ block "main" . }}{{ end }}
+  <footer class="site-footer container">
+    <span>© {{ now.Year }} {{ site.Data.profile.name }}</span>
+    <span>Built with Hugo · Published with GitHub Pages</span>
+    <a href="#top">Back to top ↑</a>
+  </footer>
 </body>
 </html>

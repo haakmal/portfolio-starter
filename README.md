@@ -1,6 +1,6 @@
 # Design Portfolio Starter
 
-A minimal, professional Hugo portfolio for design students. **You can publish your first site using GitHub in a browser.** You do not need to know HTML, CSS or JavaScript. The starter is yours to change, extend or completely redesign.
+A modern editorial portfolio starter for design students, with restrained neo-brutalist details. **You can publish your first site using GitHub in a browser.** You do not need to know HTML, CSS or JavaScript. The starter is yours to change, extend or completely redesign.
 
 This is a starter repository, not a content-management service. GitHub holds your files, keeps a record of changes and publishes the site through GitHub Actions and Pages.
 
@@ -25,7 +25,8 @@ This is a starter repository, not a content-management service. GitHub holds you
 | Add project images | Your project's folder | Upload an image beside `index.md`; reference it using Markdown. |
 | Change project ordering | Project `index.md` | Change `weight: 1`, `weight: 2`, etc. Lower numbers appear first. |
 | Hide unfinished work | Project `index.md` | Set `draft: true` until it is ready. |
-| Change fonts, colours or spacing | `assets/css/main.css` | Optional; start with the variables under `:root`. |
+| Change accent, fonts or project layout | `data/design.yaml` | Choose from beginner-friendly settings. |
+| Make more advanced design changes | `assets/css/custom.css` | Optional CSS overrides, loaded after the starter design. |
 
 ### Example project structure
 
@@ -60,6 +61,19 @@ Below the closing `---`, write in Markdown. For example, `## Context`, `## Appro
 
 Select a file → pencil icon → edit → **Commit changes**. GitHub stores a version history. For a new project, use **Add file → Create new file** to create `content/work/my-project/index.md`; use **Add file → Upload files** to add images in that same folder. GitHub's browser interface does not create empty folders, so folders appear when you create files inside them.
 
+## Personalise the visual design
+
+Edit [`data/design.yaml`](data/design.yaml) through GitHub to choose your accent colour, one of **five typeface pairings**, and a project grid or editorial list. There is no alignment setting: the default is left-aligned. These choices are optional; students can completely redesign the site using `assets/css/custom.css`, `assets/css/main.css`, or `layouts/`.
+
+| Setting | Example | Available options |
+| --- | --- | --- |
+| `accent` | `"#465FE8"` | Any six-digit HEX colour |
+| `accent_text` | `"#FFFFFF"` | A readable text colour for buttons |
+| `font_pair` | `grotesk` | `grotesk`, `studio`, `humanist`, `contrast`, `system` |
+| `work_layout` | `grid` | `grid`, `list` |
+
+The first four font pairings use Google Fonts when online, with local fallbacks. The `system` pairing makes no external font requests. Open [`docs/typeface-preview.html`](docs/typeface-preview.html) locally to compare them, and see [`docs/CUSTOMISATION.md`](docs/CUSTOMISATION.md) for advanced examples and troubleshooting.
+
 ## What NOT to edit (at first)
 
 | Location | Why it exists | Guidance |
@@ -69,9 +83,10 @@ Select a file → pencil icon → edit → **Commit changes**. GitHub stores a v
 | `hugo.toml` | Hugo site configuration | Do not change `baseURL` for normal GitHub Pages deployment; Actions sets it automatically. |
 | `.gitignore` | Excludes generated files | Leave as supplied. |
 | `public/`, `resources/` | Generated Hugo output | Do not edit or commit; these are rebuilt. |
-| `assets/css/main.css` | Visual styling | Optional; changing it is not required to publish. |
+| `assets/css/main.css` | Visual styling | Optional advanced editing; use `data/design.yaml` first. |
+| `assets/css/custom.css` | Optional styling overrides | Safe place to experiment with CSS once comfortable. |
 
-**Safe editing rule:** Start with `data/profile.yaml`, `content/about.md`, and `content/work/`. Keep the YAML `---` delimiters, colons, quotes and indentation intact. Never publish passwords, student records, private client data or confidential research.
+**Safe editing rule:** Start with `data/profile.yaml`, `data/design.yaml`, `content/about.md`, and `content/work/`. Keep the YAML `---` delimiters, colons, quotes and indentation intact. Never publish passwords, student records, private client data or confidential research.
 
 ## Troubleshooting publishing
 
@@ -85,6 +100,8 @@ Select a file → pencil icon → edit → **Commit changes**. GitHub stores a v
 | Project cover missing | Filename doesn't match `cover` | Check spelling, extension and letter case, e.g. `cover.jpg` vs `Cover.JPG`. |
 | Text looks broken after editing YAML | Missing quote, colon or closing `---` | Compare with the example project; restore the last working version from **History**. |
 | Changes not visible | Workflow still running, browser cache, or wrong branch | Wait for a green deployment, refresh the page and check `main`. |
+| Fonts do not change | Wrong `font_pair` value or font provider blocked | Use one of the five supported values; the browser may show fallback fonts offline. |
+| Accent buttons are hard to read | Insufficient contrast | Update `accent_text` to white or dark; check contrast. |
 | GitHub refuses a commit | Permissions or conflicting edits | Check that you own the repository and are editing the intended branch; review GitHub's conflict message before overwriting anything. |
 
 **Recover a mistake:** Open the file → **History** → inspect a previous version. Copy its content back into the file and commit the correction. Do not delete the repository to fix a broken page. For larger changes, create a branch first so you can review changes before merging.

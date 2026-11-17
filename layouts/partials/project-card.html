@@ -1,1 +1,17 @@
-<article class="project-card"><a href="{{ .RelPermalink }}">{{ with .Params.cover }}{{ with $.Resources.GetMatch . }}<div class="project-image"><img src="{{ .RelPermalink }}" alt="" loading="lazy" width="1200" height="800"></div>{{ end }}{{ end }}<div class="project-caption"><h3>{{ .Title }} <span aria-hidden="true">↗</span></h3><p>{{ .Description }}</p>{{ with .Params.year }}<small>{{ . }}</small>{{ end }}</div></a></article>
+<article class="project-card">
+  <a class="project-link" href="{{ .RelPermalink }}">
+    {{ with .Params.cover }}
+      {{ with $.Resources.GetMatch . }}
+      <div class="project-image"><img src="{{ .RelPermalink }}" alt="" loading="lazy" width="1200" height="800"></div>
+      {{ else }}<div class="project-image project-image--placeholder" aria-hidden="true"></div>{{ end }}
+    {{ else }}<div class="project-image project-image--placeholder" aria-hidden="true"></div>{{ end }}
+    <div class="project-caption">
+      <div class="project-caption-copy">
+        <h3>{{ .Title }}</h3>
+        {{ with .Description }}<p>{{ . }}</p>{{ end }}
+        <small>{{ with .Params.year }}{{ . }}{{ end }}{{ with .Params.role }}{{ if $.Params.year }} / {{ end }}{{ . }}{{ end }}</small>
+      </div>
+      <span class="project-arrow" aria-hidden="true">↗</span>
+    </div>
+  </a>
+</article>

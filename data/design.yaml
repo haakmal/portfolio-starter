@@ -1,0 +1,24 @@
+# SAFE TO EDIT — Portfolio appearance.
+# Change the values after the colon. Keep the property names and indentation.
+# If you make a mistake, compare with the options below or restore this file in GitHub.
+
+# Any six-digit HEX colour. The starter uses cobalt blue.
+accent: "#465FE8"
+
+# Text displayed on accent-coloured buttons. Use "#FFFFFF" or "#151515"
+# and check that it remains readable against your chosen accent.
+accent_text: "#FFFFFF"
+
+# Font options: grotesk | studio | humanist | contrast | system
+# grotesk: Space Grotesk + DM Sans (default)
+# studio:  Archivo + DM Sans
+# humanist: Manrope + Source Sans 3
+# contrast: Fraunces + DM Sans (expressive serif headings)
+# system:  device fonts, without external font requests
+font_pair: grotesk
+
+# Project index: grid | list
+work_layout: grid
+
+# Want more control? Edit assets/css/custom.css. It loads after the starter styles.
+# You can also edit assets/css/main.css and layouts/ directly if you want.

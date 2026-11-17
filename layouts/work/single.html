@@ -1,1 +1,24 @@
-{{ define "main" }}<main id="main" class="container case-study"><a class="back-link" href="{{ "work/" | relURL }}">← All work</a><header class="case-header"><p class="eyebrow">Case study{{ with .Params.year }} / {{ . }}{{ end }}</p><h1>{{ .Title }}</h1>{{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}{{ with .Params.role }}<p class="meta">Role: {{ . }}</p>{{ end }}</header>{{ with .Params.cover }}{{ with $.Resources.GetMatch . }}<figure class="cover"><img src="{{ .RelPermalink }}" alt="Cover image for {{ $.Title }}" width="1200" height="800"></figure>{{ end }}{{ end }}<article class="prose">{{ .Content }}</article><a class="back-link end-link" href="{{ "work/" | relURL }}">← All work</a></main>{{ end }}
+{{ define "main" }}
+<main id="main" class="container case-study">
+  <a class="back-link" href="{{ "work/" | relURL }}">← All work</a>
+  <header class="case-header">
+    <p class="eyebrow">Case study{{ with .Params.year }} / {{ . }}{{ end }}</p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+  </header>
+  {{ with .Params.cover }}
+    {{ with $.Resources.GetMatch . }}
+      <figure class="cover"><img src="{{ .RelPermalink }}" alt="{{ $.Params.cover_alt | default (printf "Cover image for %s" $.Title) }}" width="1200" height="800"></figure>
+    {{ end }}
+  {{ end }}
+  <div class="case-layout">
+    <aside class="case-aside" aria-label="Project information">
+      <p class="eyebrow">Project details</p>
+      {{ with .Params.year }}<div><strong>Year</strong><span>{{ . }}</span></div>{{ end }}
+      {{ with .Params.role }}<div><strong>Role</strong><span>{{ . }}</span></div>{{ end }}
+    </aside>
+    <article class="prose">{{ .Content }}</article>
+  </div>
+  <a class="back-link end-link" href="{{ "work/" | relURL }}">← All work</a>
+</main>
+{{ end }}

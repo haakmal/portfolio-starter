@@ -1,0 +1,18 @@
+/*
+ * OPTIONAL ADVANCED CUSTOMISATION
+ * ------------------------------------------------------------
+ * This file loads AFTER the starter's main.css and data/design.yaml values.
+ * Students may change any CSS property here, including layout and type.
+ * Keep this file empty if you are happy with the supplied design.
+ *
+ * Example — wider reading column:
+ * :root { --reading-width: 80ch; }
+ *
+ * Example — custom heading font (install or link the font yourself):
+ * body[class] { --font-head: "My Font", Georgia, serif; }
+ *
+ * Example — a completely different project layout:
+ * .project-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+ *
+ * The source templates under layouts/ are also yours to edit.
+ */

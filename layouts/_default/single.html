@@ -1,1 +1,13 @@
-{{ define "main" }}<main id="main" class="container page"><p class="eyebrow">Portfolio / About</p><h1>{{ .Title }}</h1><article class="prose">{{ .Content }}</article>{{ with site.Data.profile.email }}<p class="contact"><a href="mailto:{{ . }}">Email me ↗</a></p>{{ end }}{{ with site.Data.profile.links }}<div class="profile-links">{{ range . }}{{ if .url }}<a href="{{ .url | safeURL }}" rel="noopener noreferrer">{{ .label }} ↗</a>{{ end }}{{ end }}</div>{{ end }}</main>{{ end }}
+{{ define "main" }}
+<main id="main" class="container page about-page">
+  <p class="eyebrow">Portfolio / About</p>
+  <h1>{{ .Title }}</h1>
+  <article class="prose">{{ .Content }}</article>
+  {{ with site.Data.profile.email }}<p class="contact"><a class="button-link" href="mailto:{{ . }}">Email me <span aria-hidden="true">↗</span></a></p>{{ end }}
+  {{ with site.Data.profile.links }}
+    <div class="profile-links">
+      {{ range . }}{{ if .url }}<a href="{{ .url | safeURL }}" rel="noopener noreferrer">{{ .label }} ↗</a>{{ end }}{{ end }}
+    </div>
+  {{ end }}
+</main>
+{{ end }}
