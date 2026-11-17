@@ -15,7 +15,7 @@ accent_text: "#FFFFFF"
 # humanist: Manrope + Source Sans 3
 # contrast: Fraunces + DM Sans (expressive serif headings)
 # system:  device fonts, without external font requests
-font_pair: grotesk
+font_pair: humanist
 
 # Project index: grid | list
 work_layout: grid

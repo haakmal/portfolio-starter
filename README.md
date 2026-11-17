@@ -1,114 +1,78 @@
 # Design Portfolio Starter
 
-A modern editorial portfolio starter for design students, with restrained neo-brutalist details. **You can publish your first site using GitHub in a browser.** You do not need to know HTML, CSS or JavaScript. The starter is yours to change, extend or completely redesign.
+A responsive Hugo portfolio for designers. It uses an editorial visual system with strong borders, generous spacing and an adjustable accent. **You can create, edit and publish your portfolio entirely through GitHub's website.** You do not need to install Hugo, Git or a code editor to begin.
 
-This is a starter repository, not a content-management service. GitHub holds your files, keeps a record of changes and publishes the site through GitHub Actions and Pages.
+This is **your portfolio**, not a course submission system. You own the repository, its content and its design. You can keep the starter appearance, change the settings or rebuild it yourself.
 
-## Start here — publish without installing software
+## Get your site online
 
-1. Create a free GitHub account and sign in.
-2. On the starter repository, select **Use this template → Create a new repository** (not *Fork*). Name it `yourusername.github.io` for a personal site or any name for a project site. Make the repository **Public** if you are using GitHub Pages on a plan that requires it. Don't put private information into a public repository.
-3. Open **Settings → Pages** in your new repository. Under **Build and deployment**, choose **GitHub Actions** as the source.
-4. Open the **Actions** tab. The `Publish portfolio` workflow runs when changes are pushed to `main`. If no run appears, choose the workflow and **Run workflow**. Allow Actions if GitHub asks.
-5. Wait until the workflow shows a green check. Return to **Settings → Pages** to find your public site URL. The first build can take a few minutes.
-6. In the repository, open `data/profile.yaml`, select the pencil icon, edit your name and introduction, and **Commit changes** to `main`. A new deployment should start automatically.
+1. Sign in to [GitHub](https://github.com/) and open the original portfolio starter repository.
+2. Select **Use this template → Create a new repository** (not **Fork**). Name it `YOUR-USERNAME.github.io` for a personal site, or choose another name for a project site. Use a **Public** repository for the simplest GitHub Pages setup. **Never publish confidential information.**
+3. In your new repository, open **Settings → Pages**. Under **Build and deployment**, choose **GitHub Actions** as the source.
+4. Open **Actions** and look for **Publish portfolio**. If there is no run yet, open the workflow and select **Run workflow**. GitHub may first ask you to enable Actions.
+5. Wait for the green check. In **Settings → Pages**, open your website address. The first deployment may take a few minutes.
+6. Open `data/profile.yaml`, select **Edit** (pencil), replace the example details and **Commit changes** to `main`. A new build should begin automatically.
 
-**If you cannot see “Use this template”:** the original repository owner must enable *Template repository* in its settings. If Pages cannot be configured, check repository visibility and permissions before proceeding.
+If the site does not appear, follow [Publishing and troubleshooting](docs/TROUBLESHOOTING.md). **Do not edit the GitHub Actions workflow to fix a missing site until you've checked the settings and build log.**
 
-## Edit your portfolio
+## What you can safely edit
 
-| You want to… | Edit this file or folder | How |
-| --- | --- | --- |
-| Change your name, introduction, email or links | `data/profile.yaml` | Edit quoted text; keep the YAML keys and indentation. |
-| Edit your About page | `content/about.md` | Edit Markdown below the second `---` line. |
-| Add a project | `content/work/` | Copy an example project folder; rename it; edit `index.md`. |
-| Add project images | Your project's folder | Upload an image beside `index.md`; reference it using Markdown. |
-| Change project ordering | Project `index.md` | Change `weight: 1`, `weight: 2`, etc. Lower numbers appear first. |
-| Hide unfinished work | Project `index.md` | Set `draft: true` until it is ready. |
-| Change accent, fonts or project layout | `data/design.yaml` | Choose from beginner-friendly settings. |
-| Make more advanced design changes | `assets/css/custom.css` | Optional CSS overrides, loaded after the starter design. |
+| Task | File or folder |
+| --- | --- |
+| Your name, introduction, email and links | [`data/profile.yaml`](data/profile.yaml) |
+| Accent colour, font pairing, grid or list layout | [`data/design.yaml`](data/design.yaml) |
+| Your About page | [`content/about.md`](content/about.md) |
+| Project titles, descriptions and case studies | `content/work/PROJECT-NAME/index.md` |
+| Project covers and process images | The same project folder as its `index.md` |
+| Additional CSS (optional) | [`assets/css/custom.css`](assets/css/custom.css) |
 
-### Example project structure
+**Start with the first five rows.** The site will build itself after you commit changes. For more detail, read [Safe editing and file map](docs/SAFE_EDITING.md) and [Case-study template](docs/CASE_STUDY_TEMPLATE.md).
 
-```text
-content/work/my-project/
-  index.md
-  cover.jpg
-  process-01.jpg
-```
+## Add a project through GitHub
 
-Edit the `index.md` front matter:
+1. Open `content/work/` and look at one of the example project folders.
+2. Choose **Add file → Create new file** in `content/work/` (or create a file from the repository root). Enter `content/work/my-project/index.md` as the filename. GitHub creates the folder when the file is committed.
+3. Copy the starter front matter from [the case-study template](docs/CASE_STUDY_TEMPLATE.md). Change its title and description, set `draft: false` when ready, and write your case study below the closing `---` line.
+4. Commit the file to `main`. Navigate into `content/work/my-project/`, choose **Add file → Upload files**, and upload `cover.jpg` or other images. The `cover:` filename must match the uploaded file exactly, including capitalisation.
+5. Wait for the **Publish portfolio** Action to finish, then check the Work page and your project.
+
+**Markdown** is plain text with simple formatting: `## Heading`, `**bold**`, `[link](https://example.com)` and `![descriptive image text](process-01.jpg)`. Case-study headings are suggestions, not mandatory categories.
+
+## Adjust the design without coding
+
+Edit [`data/design.yaml`](data/design.yaml):
 
 ```yaml
----
-title: "My Project"
-description: "One sentence about the work."
-date: 2026-11-17
-draft: false
-weight: 1
-featured: true
-cover: "cover.jpg"
-role: "Research and prototyping"
-year: "2026"
----
+accent: "#465FE8"
+accent_text: "#FFFFFF"
+font_pair: grotesk
+work_layout: grid
 ```
 
-Below the closing `---`, write in Markdown. For example, `## Context`, `## Approach`, `## Outcome`, and `## Reflection`. These are suggestions, not mandatory headings. To include an image stored beside the project file, write `![A description of the image](process-01.jpg)`.
+Choose `grotesk`, `studio`, `humanist`, `contrast` or `system` for typography. Use `grid` or `list` for the Work page. Keep the accent and accent text colours readable together. See [Customisation](docs/CUSTOMISATION.md) for all choices and optional CSS overrides.
 
-**Images:** Use short lowercase filenames without spaces. Keep files reasonably sized (for example, compress large photographs before uploading). Write meaningful alternative text for informative images. Do not publish other people's work without permission or attribution.
+## What not to edit yet
 
-### Editing in GitHub
+| Location | Why |
+| --- | --- |
+| `.github/workflows/deploy.yml` | Publishes the site automatically; changing it can stop deployment. |
+| `hugo.toml` | Hugo configuration; the workflow already sets the correct public URL. |
+| `layouts/` | Hugo page templates; beginners do not need to edit HTML. |
+| `assets/css/main.css` | Core design rules; use `design.yaml` first. |
+| `.gitignore` | Keeps generated files out of the repository. |
+| `public/` and `resources/` | Hugo-generated output, not source files. |
 
-Select a file → pencil icon → edit → **Commit changes**. GitHub stores a version history. For a new project, use **Add file → Create new file** to create `content/work/my-project/index.md`; use **Add file → Upload files** to add images in that same folder. GitHub's browser interface does not create empty folders, so folders appear when you create files inside them.
+These are **safeguards, not restrictions**. Students who want to learn HTML, CSS, JavaScript or Hugo can modify the entire site. Work on a branch first when changing templates or deployment files.
 
-## Personalise the visual design
+## Before sharing your portfolio
 
-Edit [`data/design.yaml`](data/design.yaml) through GitHub to choose your accent colour, one of **five typeface pairings**, and a project grid or editorial list. There is no alignment setting: the default is left-aligned. These choices are optional; students can completely redesign the site using `assets/css/custom.css`, `assets/css/main.css`, or `layouts/`.
+Check the [Publishing checklist](docs/PUBLISHING_CHECKLIST.md): replace example projects, confirm that your contact details are intentional, test mobile and keyboard navigation, describe meaningful images, check colour contrast, and confirm that your latest GitHub Actions deployment succeeded.
 
-| Setting | Example | Available options |
-| --- | --- | --- |
-| `accent` | `"#465FE8"` | Any six-digit HEX colour |
-| `accent_text` | `"#FFFFFF"` | A readable text colour for buttons |
-| `font_pair` | `grotesk` | `grotesk`, `studio`, `humanist`, `contrast`, `system` |
-| `work_layout` | `grid` | `grid`, `list` |
+For errors, see [Troubleshooting](docs/TROUBLESHOOTING.md), including missing images, failed Actions, YAML mistakes and recovering previous file versions.
 
-The first four font pairings use Google Fonts when online, with local fallbacks. The `system` pairing makes no external font requests. Open [`docs/typeface-preview.html`](docs/typeface-preview.html) locally to compare them, and see [`docs/CUSTOMISATION.md`](docs/CUSTOMISATION.md) for advanced examples and troubleshooting.
+## Optional local development
 
-## What NOT to edit (at first)
-
-| Location | Why it exists | Guidance |
-| --- | --- | --- |
-| `.github/workflows/deploy.yml` | Builds and publishes the site | **Do not edit** unless you understand GitHub Actions. |
-| `layouts/` | HTML page structure | Leave alone for the beginner pathway. |
-| `hugo.toml` | Hugo site configuration | Do not change `baseURL` for normal GitHub Pages deployment; Actions sets it automatically. |
-| `.gitignore` | Excludes generated files | Leave as supplied. |
-| `public/`, `resources/` | Generated Hugo output | Do not edit or commit; these are rebuilt. |
-| `assets/css/main.css` | Visual styling | Optional advanced editing; use `data/design.yaml` first. |
-| `assets/css/custom.css` | Optional styling overrides | Safe place to experiment with CSS once comfortable. |
-
-**Safe editing rule:** Start with `data/profile.yaml`, `data/design.yaml`, `content/about.md`, and `content/work/`. Keep the YAML `---` delimiters, colons, quotes and indentation intact. Never publish passwords, student records, private client data or confidential research.
-
-## Troubleshooting publishing
-
-| What you see | Likely cause | What to do |
-| --- | --- | --- |
-| No public site / 404 immediately after setup | Pages not enabled, workflow hasn't run, or deployment pending | Set **Settings → Pages → Source: GitHub Actions**; check the Actions tab and wait for deployment. |
-| Workflow did not start | Commit not on `main`, Actions disabled, or branch name differs | Check branch and Actions permissions; use **Run workflow** to test. |
-| Red X on Actions build | YAML or Markdown front matter error, missing file, or Hugo build error | Open the failed workflow → **Build site** step; read the first error and locate the file/line. |
-| Site loads without styling | Incorrect Pages URL or base path | Confirm Pages is using the supplied Actions workflow; don't hardcode root-relative asset paths. |
-| A project does not appear | `draft: true`, wrong folder, or incorrect filename | Set `draft: false`; use `content/work/project-name/index.md`. |
-| Project cover missing | Filename doesn't match `cover` | Check spelling, extension and letter case, e.g. `cover.jpg` vs `Cover.JPG`. |
-| Text looks broken after editing YAML | Missing quote, colon or closing `---` | Compare with the example project; restore the last working version from **History**. |
-| Changes not visible | Workflow still running, browser cache, or wrong branch | Wait for a green deployment, refresh the page and check `main`. |
-| Fonts do not change | Wrong `font_pair` value or font provider blocked | Use one of the five supported values; the browser may show fallback fonts offline. |
-| Accent buttons are hard to read | Insufficient contrast | Update `accent_text` to white or dark; check contrast. |
-| GitHub refuses a commit | Permissions or conflicting edits | Check that you own the repository and are editing the intended branch; review GitHub's conflict message before overwriting anything. |
-
-**Recover a mistake:** Open the file → **History** → inspect a previous version. Copy its content back into the file and commit the correction. Do not delete the repository to fix a broken page. For larger changes, create a branch first so you can review changes before merging.
-
-## Optional: work locally
-
-Install Git, Hugo Extended and a code editor. Then:
+Install Git, Hugo Extended and an editor, then:
 
 ```sh
 git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
@@ -116,12 +80,12 @@ cd YOUR-REPOSITORY
 hugo server -D
 ```
 
-Open `http://localhost:1313/`. When ready, commit and push your changes. Use `hugo --gc --minify` to check a production build. Local development is optional, not a requirement for publishing.
+Open `http://localhost:1313/`. Run `hugo --gc --minify` to check a production build. Local development is optional; GitHub's browser editor remains a valid authoring workflow.
 
-## More guidance
+## Learning documentation
 
-A separate **Building Your Design Portfolio with Hugo and GitHub** tutorial series is planned for the Interaction Hub. It will explain GitHub, Markdown, case studies, publishing, recovery and optional CSS/HTML customisation step by step. This repository README remains the immediate starting point.
+A separate draft tutorial series, **Building Your Design Portfolio with Hugo and GitHub**, is being prepared for the Interaction Hub. It covers GitHub, case studies, media, publishing, maintenance, optional local development and troubleshooting. This README is intentionally the short starting point.
 
-## License and ownership
+## Ownership and licence
 
-The starter code is offered under the MIT License (see `LICENSE`). Your own writing, images, designs and case studies remain yours; the starter license does not grant rights to other people's content.
+The starter code is MIT-licensed (see `LICENSE`). Your own writing, photographs, designs and case studies remain yours. Check permission and attribution before publishing other people's material.
